@@ -1,8 +1,8 @@
 package unit
 
 import (
-	"fizzbuzz/internal/application/rules"
-	"fizzbuzz/internal/application/strategies"
+	"fizzbuzz/src/application/rules"
+	"fizzbuzz/src/application/strategies"
 	"testing"
 )
 

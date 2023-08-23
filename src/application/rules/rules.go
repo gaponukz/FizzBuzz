@@ -1,7 +1,7 @@
 package rules
 
 import (
-	"fizzbuzz/internal/domain/value_objects"
+	"fizzbuzz/src/domain/value_objects"
 )
 
 type strategy interface {
