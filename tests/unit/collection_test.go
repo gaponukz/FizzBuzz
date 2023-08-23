@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-func TestRules(t *testing.T) {
+func TestCollection(t *testing.T) {
 	fizzCondition := strategies.NewDivStrategy(3)
 	buzzCondition := strategies.NewDivStrategy(5)
 	ruleInstance := rules.NewRulesCollection(
