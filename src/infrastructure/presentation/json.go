@@ -13,8 +13,8 @@ func NewJSONPresenter() jsonPresenter {
 
 func (p jsonPresenter) Present(tag value_objects.Tag) []byte {
 	result := struct {
-		result string
-	}{result: string(tag)}
+		Result string `json:"result"`
+	}{Result: string(tag)}
 
 	b, err := json.Marshal(result)
 	if err != nil {
