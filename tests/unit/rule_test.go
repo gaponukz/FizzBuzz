@@ -1,13 +1,21 @@
 package unit
 
 import (
-	"fizzbuzz/internal/usecase"
-	"fizzbuzz/internal/value_objects"
+	"fizzbuzz/internal/application/rules"
+	"fizzbuzz/internal/application/strategies"
+	"fizzbuzz/internal/domain/value_objects"
+	"strconv"
 	"testing"
 )
 
 func TestRules(t *testing.T) {
-	ruleInstance := usecase.NewRule()
+	fizzCondition := strategies.NewDivStrategy(3)
+	buzzCondition := strategies.NewDivStrategy(5)
+	ruleInstance := rules.NewRulesCollection(
+		rules.NewRule("FizzBuzz", strategies.NewAndStrategy(fizzCondition, buzzCondition)),
+		rules.NewRule("Fizz", fizzCondition),
+		rules.NewRule("Buzz", buzzCondition),
+	)
 
 	cases := []struct {
 		InputNumber int
@@ -37,11 +45,7 @@ func TestRules(t *testing.T) {
 
 	for _, testCase := range cases {
 		t.Run(string(testCase.ExpectedTag), func(t *testing.T) {
-			actualTag, err := ruleInstance.Convert(testCase.InputNumber)
-			if err != nil {
-				t.Error(err.Error())
-			}
-
+			actualTag := ruleInstance.Find(testCase.InputNumber, value_objects.Tag(strconv.Itoa(testCase.InputNumber)))
 			if actualTag != testCase.ExpectedTag {
 				t.Errorf("For input %d, expected %s, but got %s", testCase.InputNumber, testCase.ExpectedTag, actualTag)
 			}
