@@ -1,9 +1,9 @@
 package unit
 
 import (
-	"fizzbuzz/internal/application/rules"
-	"fizzbuzz/internal/application/strategies"
-	"fizzbuzz/internal/domain/value_objects"
+	"fizzbuzz/src/application/rules"
+	"fizzbuzz/src/application/strategies"
+	"fizzbuzz/src/domain/value_objects"
 	"strconv"
 	"testing"
 )
