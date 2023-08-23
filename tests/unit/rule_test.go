@@ -1,22 +1,13 @@
 package unit
 
 import (
+	"fizzbuzz/internal/usecase"
 	"fizzbuzz/internal/value_objects"
 	"testing"
 )
 
-type rule interface {
-	Convert(int) (value_objects.Tag, error)
-}
-
-type testRule struct{}
-
-func (r testRule) Convert(number int) (value_objects.Tag, error) {
-	return "", nil
-}
-
 func TestRules(t *testing.T) {
-	ruleInstance := &testRule{}
+	ruleInstance := usecase.NewRule()
 
 	cases := []struct {
 		InputNumber int
@@ -39,7 +30,7 @@ func TestRules(t *testing.T) {
 		{40, "Buzz"},
 		{60, "FizzBuzz"},
 		{77, "77"},
-		{90, "Fizz"},
+		{90, "FizzBuzz"},
 		{100, "Buzz"},
 		{1000, "Buzz"},
 	}
